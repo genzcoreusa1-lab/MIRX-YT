@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova - Modern Product Landing Page</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  color: #19182b;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: #6654f5;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  list-style: none;
+}
+
+nav a {
+  color: #555;
+  text-decoration: none;
+}
+
+nav a:hover { color: #6654f5; }
+
+.btn {
+  display: inline-block;
+  background: #6654f5;
+  color: white !important;
+  padding: 12px 23px;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover { background: #4f3dde; }
+
+.hero {
+  padding: 85px 0;
+  text-align: center;
+  background: linear-gradient(135deg, #f9f8ff, #eeebff);
+}
+
+.hero h1 {
+  font-size: clamp(36px, 6vw, 62px);
+  line-height: 1.15;
+  margin: 20px 0;
+}
+
+.hero h1 span { color: #6654f5; }
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 28px;
+  color: #666;
+  font-size: 18px;
+}
+
+.mockup {
+  max-width: 750px;
+  margin: 55px auto 0;
+  background: white;
+  border: 1px solid #e5e1ff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 20px 50px #6654f520;
+  text-align: left;
+}
+
+.mockup-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.mockup-top h3 { color: #6654f5; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.stat {
+  padding: 22px 15px;
+  background: #f7f6ff;
+  border-radius: 12px;
+}
+
+.stat h2 {
+  color: #6654f5;
+  font-size: 28px;
+}
+
+.stat p {
+  font-size: 13px;
+  margin: 5px 0 0;
+}
+
+.section { padding: 80px 0; }
+
+.heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 45px;
+}
+
+.heading h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 12px;
+}
+
+.heading p { color: #777; }
+
+.features { background: #fafaff; }
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.feature {
+  padding: 28px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 15px;
+  transition: .25s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px #2222220d;
+}
+
+.icon {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.feature h3 { margin-bottom: 10px; }
+
+.feature p { color: #777; }
+
+.cta {
+  padding: 65px 25px;
+  text-align: center;
+  background: linear-gradient(120deg, #6654f5, #9675ff);
+  color: white;
+  border-radius: 22px;
+}
+
+.cta h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  margin-bottom: 15px;
+}
+
+.cta p {
+  margin: 0 auto 25px;
+  max-width: 550px;
+  color: #f0edff;
+}
+
+.cta .btn {
+  background: white;
+  color: #6654f5 !important;
+}
+
+.faq { background: #fafaff; }
+
+.faq-list {
+  max-width: 750px;
+  margin: auto;
+}
+
+details {
+  background: white;
+  border: 1px solid #e8e8f0;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  padding: 20px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+details p {
+  margin-top: 12px;
+  color: #666;
+}
+
+footer {
+  padding: 28px 0;
+  text-align: center;
+  border-top: 1px solid #eee;
+  color: #777;
+}
+
+.menu {
+  display: none;
+  font-size: 26px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu { display: block; }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 25px;
+    flex-direction: column;
+    border-bottom: 1px solid #eee;
+  }
+
+  nav ul.show { display: flex; }
+
+  .feature-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 500px) {
+  .hero { padding: 60px 0; }
+
+  .feature-grid, .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .mockup { padding: 18px; }
+
+  .section { padding: 60px 0; }
+
+  .cta { padding: 45px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">✦ Nova</a>
+
+    <button class="menu" id="menu" aria-label="Toggle menu"
+      aria-expanded="false">☰</button>
+
+    <ul id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a class="btn" href="#get-started">Get Started →</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container">
+      <p>✨ YOUR SMARTER WORKSPACE</p>
+
+      <h1>Work smarter.<br><span>Achieve more.</span></h1>
+
+      <p>
+        Organize your work, improve productivity, and achieve your goals
+        with one simple and powerful platform.
+      </p>
+
+      <a class="btn" href="#get-started">Get Started Free →</a>
+      <a class="btn" href="#features"
+        style="background:white;color:#6654f5!important;border:1px solid #ddd;margin-left:8px">
+        Explore Features
+      </a>
+
+      <div class="mockup">
+        <div class="mockup-top">
+          <h3>✦ Nova Dashboard</h3>
+          <span>Welcome back, Alex 👋</span>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <p>Total Projects</p>
+            <h2>24</h2>
+            <p>↑ 12% this month</p>
+          </div>
+
+          <div class="stat">
+            <p>Tasks Completed</p>
+            <h2>186</h2>
+            <p>↑ 18% this month</p>
+          </div>
+
+          <div class="stat">
+            <p>Productivity</p>
+            <h2>92%</h2>
+            <p>↑ 8% this month</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section features" id="features">
+    <div class="container">
+      <div class="heading">
+        <h2>Everything you need</h2>
+        <p>Simple tools and powerful features to help you do your best work.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <div class="icon">📊</div>
+          <h3>Smart Analytics</h3>
+          <p>Track progress and understand performance with clear insights.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">⚡</div>
+          <h3>Fast & Efficient</h3>
+          <p>Save time and focus on the work that matters most.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">🔒</div>
+          <h3>Secure Workspace</h3>
+          <p>Design your workflow with privacy and security in mind.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">👥</div>
+          <h3>Team Collaboration</h3>
+          <p>Bring your team together and keep projects organized.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">📱</div>
+          <h3>Fully Responsive</h3>
+          <p>Enjoy a clean interface on mobile, tablet, and desktop.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">🎯</div>
+          <h3>Goal Tracking</h3>
+          <p>Stay focused, manage priorities, and reach your goals.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="get-started">
+    <div class="container">
+      <div class="cta">
+        <h2>Ready to get started?</h2>
+        <p>
+          Take the next step toward a simpler and more productive workflow.
+        </p>
+        <a class="btn" href="mailto:hello@example.com">
+          Get Started Today →
+        </a>
+        <a class="btn" href="product.zip" download
+          style="margin-left:8px">
+          ⬇ Download
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq">
+    <div class="container">
+      <div class="heading">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about Nova.</p>
+      </div>
+
+      <div class="faq-list">
+        <details>
+          <summary>What is Nova?</summary>
+          <p>Nova is a sample productivity product designed to help users manage tasks, projects, and everyday work.</p>
+        </details>
+
+        <details>
+          <summary>Does it work on mobile devices?</summary>
+          <p>Yes, this landing page adapts to mobile phones, tablets, and desktop screens.</p>
+        </details>
+
+        <details>
+          <summary>Is Nova free?</summary>
+          <p>Pricing depends on your actual product. Add your free plan or subscription details here.</p>
+        </details>
+
+        <details>
+          <summary>How can I get started?</summary>
+          <p>Click the Get Started button and connect it to your actual registration page or contact email.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> Nova. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const menu = document.getElementById("menu");
+const navLinks = document.getElementById("navLinks");
+
+menu.addEventListener("click", function () {
+  const open = navLinks.classList.toggle("show");
+  menu.setAttribute("aria-expanded", open);
+  menu.textContent = open ? "✕" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(function (link) {
+  link.addEventListener("click", function () {
+    navLinks.classList.remove("show");
+    menu.setAttribute("aria-expanded", "false");
+    menu.textContent = "☰";
+  });
+});
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
